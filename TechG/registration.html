@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('register.jpeg');
+        }
+        .registration-container {
+            background-color: black;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+        .registration-container h2 {
+            margin-bottom: 30px;
+            color: white;
+            font-size: 24px;
+        }
+        .registration-container input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid lightgray;
+            border-radius: 3px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .registration-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .registration-container button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            transform: translateY(-2px);
+        }
+        .registration-container a{
+            color: skyblue;
+        }
+        .registration-container a:hover{
+            color: white;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script>
+     
+    </script>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Register</h2>
+        <form action="process.php" method="post">
+            <input type="text" id="name" name="name" placeholder="Full Name" required><br>
+            <input type="text" id="standard" name="standard" placeholder="Standard" required><br>
+            <input type="text" id="create-username" name="create-username" placeholder="Create Username" required><br>
+            <input type="password" id="create-password" name="create-password" placeholder="Create Password" required><br>
+
+            <input type="submit" value="Register">
+
+          
+
+
+            <a href="first.html">Click Here To Login !</a>
+        </form>
+    </div>
+</body>
+</html>

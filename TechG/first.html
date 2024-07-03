@@ -1,0 +1,334 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('school.jpeg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(-5px); 
+        }
+        .login-container {
+            position: relative;
+            background-color: black;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .login-container h2 {
+            margin-bottom: 30px;
+            color: white;
+            font-size: 24px;
+        }
+        .login-container input {
+            width: 250px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid lightgray;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .login-container button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: pulse 0.6s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .go-back {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .go-back-icon svg {
+            fill: #2575fc;
+            transition: fill 0.3s ease;
+        }
+        .go-back:hover .go-back-icon svg {
+            fill: #6a11cb;
+        }
+        .go-back-text {
+            margin-left: 8px;
+            font-size: 14px;
+            color: #2575fc;
+            transition: color 0.3s ease;
+        }
+        .go-back:hover .go-back-text {
+            color: #6a11cb;
+        }
+        .login-container h1{
+            color: white;
+            font-size: 20px;
+        }
+        .login-container a{
+            color: skyblue;
+        }
+        .login-container a:hover{
+            color: white;
+        }
+    </style>
+    <script>
+       
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="go-back" onclick="goBack()">
+            <div class="go-back-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="go-back-text">Go Back to Previous Page</div>
+        </div>
+        <h2>Login</h2>
+        <form action="process2.php" method="post">
+            <input type="text" id="username" name="username" placeholder="Username" required><br>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required><br>
+
+
+            <button type="submit" name="student_login" onclick="validateForm(event)">Login As Student</button>
+            <button type="submit" name="teacher_login" onclick="validateForm(event)">Login as Teacher</button>
+
+
+
+
+
+           <button type="button" data-url="file:///C:/Users/priyansh/Desktop/Priyansh/second.html" onclick="validateForm(event)">Login As Student</button><br>
+
+            <button type="button" data-url="file:///C:/Users/priyansh/Desktop/Priyansh/teacher2.html" onclick="validateForm(event)">Login as Teacher</button> 
+
+
+            <h1>Still Not Registered ?</h1><br>
+            <a href="form2.html">Click Here !</a>
+        </form>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('school.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        .login-container {
+            position: relative;
+            background-color: black;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .login-container h2 {
+            margin-bottom: 30px;
+            color: white;
+            font-size: 24px;
+        }
+        .login-container input {
+            width: 250px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid lightgray;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .login-container button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: pulse 0.6s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .go-back {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .go-back-icon svg {
+            fill: #2575fc;
+            transition: fill 0.3s ease;
+        }
+        .go-back:hover .go-back-icon svg {
+            fill: #6a11cb;
+        }
+        .go-back-text {
+            margin-left: 8px;
+            font-size: 14px;
+            color: #2575fc;
+            transition: color 0.3s ease;
+        }
+        .go-back:hover .go-back-text {
+            color: #6a11cb;
+        }
+        .login-container h1 {
+            color: white;
+            font-size: 20px;
+        }
+        .login-container a {
+            color: skyblue;
+        }
+        .login-container a:hover {
+            color: white;
+        }
+       /* .marquee-container {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-text {
+            display: inline-block;
+            color: white;
+            font-size: 36px;
+            white-space: nowrap;
+            animation: marquee 10s linear infinite;
+        }
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }*/
+    </style>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</head>
+<body>
+    <!-- <div class="marquee-container">
+        <div class="marquee-text">SVKM'S UPG College</div>
+    </div> -->
+    <div class="login-container">
+        <div class="go-back" onclick="goBack()">
+            <div class="go-back-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="go-back-text">Go Back to Previous Page</div>
+        </div>
+        <h2>Login</h2>
+        <form action="process2.php" method="post">
+            <input type="text" id="username" name="username" placeholder="Username" required><br>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required><br>
+            <button type="submit" name="student_login" onclick="validateForm(event)">Login As Student</button>
+            <button type="submit" name="teacher_login" onclick="validateForm(event)">Login as Teacher</button>
+            <h1>Still Not Registered?</h1><br>
+            <a href="form2.html">Click Here!</a>
+        </form>
+    </div>
+</body>
+</html>
+s

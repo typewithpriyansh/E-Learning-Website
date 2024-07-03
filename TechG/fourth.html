@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View PDF or Open Link</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('school.jpeg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(-5px); 
+        }
+        .container {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            animation: fadeInRight 0.5s ease-out;
+        }
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .go-back {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .go-back-icon svg {
+            fill: #2575fc;
+            transition: fill 0.3s ease;
+        }
+        .go-back:hover .go-back-icon svg {
+            fill: #6a11cb;
+        }
+        .go-back-text {
+            margin-left: 8px;
+            font-size: 14px;
+            color: #2575fc;
+            transition: color 0.3s ease;
+        }
+        .go-back:hover .go-back-text {
+            color: #6a11cb;
+        }
+        .container h2 {
+            margin-bottom: 30px;
+            color: white;
+            font-size: 24px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: pulse 0.6s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .container a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="go-back" onclick="goBack()">
+            <div class="go-back-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="go-back-text">Go Back To Previous Page</div>
+        </div>
+        <h2>Select an Option</h2>
+        <button onclick="viewPDF()">View PDF</button>
+        <button onclick="openLink()">Open Link</button>
+        <button onclick="viewVideo()">View Video</button>
+    </div>
+
+    <script>
+        function viewPDF() {
+            var pdfUrl = 'file:///C:/Users/priyansh/Desktop/Priyansh/A1-S100-V1.pdf';
+            window.open(pdfUrl, '_blank');
+        }
+
+        function openLink() {
+            var linkUrl = 'https://www.youtube.com/watch?v=M2U5zpWlyl4&list=PLVLoWQFkZbhWKcVPBop5u7gDhlPUj33v9';
+            window.open(linkUrl, '_blank');
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

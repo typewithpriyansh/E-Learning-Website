@@ -1,0 +1,451 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: url('register.jpeg');
+        background-size: cover;
+        background-position: center;
+    }
+    .container {
+        background-color: black;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        width: 400px;
+        transition: background-color 0.3s;
+        animation: fadeIn 1s ease-in-out;
+    }
+    .container.student-selected {
+        background-color: black;
+    }
+    .container.teacher-selected {
+        background-color: red;
+    }
+    .tab {
+        display: none;
+    }
+    .tab.active {
+        display: block;
+    }
+    .tab-header {
+        display: flex;
+        margin-bottom: 10px;
+    }
+    .tab-header button {
+        flex: 1;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .tab-header button:hover {
+        background-color: #45a049;
+    }
+    .input-group {
+        margin-bottom: 10px;
+    }
+    .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: white;
+    }
+    .input-group input, .input-group textarea {
+        width: calc(100% - 12px);
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .input-group input:focus, .input-group textarea:focus {
+        outline: none;
+        border-color: #4CAF50;
+    }
+    .input-group button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background 0.3s, transform 0.2s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .input-group button:hover {
+        background: linear-gradient(to right, #2575fc, #6a11cb);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        animation: pulse 0.6s infinite;
+    }
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="tab-header">
+        <button onclick="openTab(event, 'student')">Student</button>
+        <button onclick="openTab(event, 'teacher')">Teacher</button>
+    </div>
+    
+    <form id="student" class="tab active" onsubmit="handleSubmit(event, 'student');">
+        <div class="input-group">
+            <label for="studentName">Name:</label>
+            <input type="text" id="studentName" name="studentName" required>
+        </div>
+        <div class="input-group">
+            <label for="studentEmail">Email:</label>
+            <input type="email" id="studentEmail" name="studentEmail" required>
+        </div>
+        <div class="input-group">
+            <label for="studentDOB">Date of Birth:</label>
+            <input type="date" id="studentDOB" name="studentDOB" required>
+        </div>
+        <div class="input-group">
+            <label for="studentAddress">Address:</label>
+            <textarea id="studentAddress" name="studentAddress" rows="3" required></textarea>
+        </div>
+        <div class="input-group">
+            <label for="studentMobNo">Mobile Number:</label>
+            <input type="tel" id="studentMobNo" name="studentMobNo" pattern="[0-9]{10}" required>
+        </div>
+        <div class="input-group">
+            <label for="studentUsername">Username:</label>
+            <input type="text" id="studentUsername" name="studentUsername" required>
+        </div>
+        <div class="input-group">
+            <label for="studentPassword">Password:</label>
+            <input type="password" id="studentPassword" name="studentPassword" required>
+        </div>
+        <div class="input-group">
+            <button type="submit">Register as Student</button>
+        </div>
+    </form>
+    
+    <form id="teacher" class="tab" onsubmit="handleSubmit(event, 'teacher');">
+        <div class="input-group">
+            <label for="teacherName">Name:</label>
+            <input type="text" id="teacherName" name="teacherName" required>
+        </div>
+        <div class="input-group">
+            <label for="teacherEmail">Email:</label>
+            <input type="email" id="teacherEmail" name="teacherEmail" required>
+        </div>
+        <div class="input-group">
+            <label for="teacherDOB">Date of Birth:</label>
+            <input type="date" id="teacherDOB" name="teacherDOB" required>
+        </div>
+        <div class="input-group">
+            <label for="teacherAddress">Address:</label>
+            <textarea id="teacherAddress" name="teacherAddress" rows="3" required></textarea>
+        </div>
+        <div class="input-group">
+            <label for="teacherMobNo">Mobile Number:</label>
+            <input type="tel" id="teacherMobNo" name="teacherMobNo" pattern="[0-9]{10}" required>
+        </div>
+        <div class="input-group">
+            <label for="teacherUsername">Username:</label>
+            <input type="text" id="teacherUsername" name="teacherUsername" required>
+        </div>
+        <div class="input-group">
+            <label for="teacherPassword">Password:</label>
+            <input type="password" id="teacherPassword" name="teacherPassword" required>
+        </div>
+        <div class="input-group">
+            <button type="submit">Register as Teacher</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByTagName("button");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+        
+        // Change container background color based on tab selected
+        var container = document.querySelector('.container');
+        if (tabName === 'student') {
+            container.classList.remove('teacher-selected');
+            container.classList.add('student-selected');
+        } else if (tabName === 'teacher') {
+            container.classList.remove('student-selected');
+            container.classList.add('teacher-selected');
+        }
+    }
+
+    function handleSubmit(event, userType) {
+        event.preventDefault();
+        alert(userType.charAt(0).toUpperCase() + userType.slice(1) + ' registered successfully');
+        window.location.href = 'first.html';
+    }
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: url('register.jpeg');
+        background-size: cover;
+        background-position: center;
+    }
+    .container {
+        background-color: black;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        width: 400px;
+        transition: background-color 0.3s;
+        animation: fadeIn 1s ease-in-out;
+    }
+    .container.student-selected {
+        background-color: jet black;
+    }
+    .container.teacher-selected {
+        background-color: charcoal black;
+    }
+    .tab {
+        display: none;
+    }
+    .tab.active {
+        display: block;
+    }
+    .tab-header {
+        display: flex;
+        margin-bottom: 10px;
+    }
+    .tab-header button {
+        flex: 1;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .tab-header button:hover {
+        background-color: darkgrey;
+    }
+    .input-group {
+        margin-bottom: 10px;
+    }
+    .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: white;
+    }
+    .input-group input, .input-group textarea {
+        width: calc(100% - 12px);
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .input-group input:focus, .input-group textarea:focus {
+        outline: none;
+        border-color: #4CAF50;
+    }
+    .input-group button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background 0.3s, transform 0.2s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .input-group button:hover {
+        background: linear-gradient(to right, #2575fc, #6a11cb);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        animation: pulse 0.6s infinite;
+    }
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="tab-header">
+        <button onclick="openTab(event, 'student')">Student</button>
+        <button onclick="openTab(event, 'teacher')">Teacher</button>
+    </div>
+    
+    <form id="student" class="tab active" method="POST" action="registration.php">
+        <div class="input-group">
+            <label for="studentName">Name:</label>
+            <input type="text" id="studentName" name="studentName" required>
+        </div>
+        <!-- <div class="input-group">
+            <label for="studentEmail">Email:</label>
+            <input type="email" id="studentEmail" name="studentEmail" required>
+        </div> -->
+        <div class="input-group">
+            <label for="studentDOB">Date of Birth:</label>
+            <input type="date" id="studentDOB" name="studentDOB" required>
+        </div>
+        <div class="input-group">
+            <label for="studentAddress">Address:</label>
+            <textarea id="studentAddress" name="studentAddress" rows="3" required></textarea>
+        </div>
+        <div class="input-group">
+            <label for="studentMobNo">Mobile Number:</label>
+            <input type="tel" id="studentMobNo" name="studentMobNo" pattern="[0-9]{10}" required>
+        </div>
+        <div class="input-group">
+            <label for="studentUsername">Username:</label>
+            <input type="text" id="studentUsername" name="studentUsername" required>
+        </div>
+        <div class="input-group">
+            <label for="studentPassword">Password:</label>
+            <input type="password" id="studentPassword" name="studentPassword" required>
+        </div>
+        <div class="input-group">
+            <button type="submit" name="registerStudent">Register as Student</button>
+        </div>
+    </form>
+    
+    <form id="teacher" class="tab" method="POST" action="registration.php">
+        <div class="input-group">
+            <label for="teacherName">Name:</label>
+            <input type="text" id="teacherName" name="teacherName" required>
+        </div>
+        <div class="input-group">
+            <label for="teacherEmail">Email:</label>
+            <input type="email" id="teacherEmail" name="teacherEmail" required>
+        </div>
+        <!-- <div class="input-group">
+            <label for="teacherDOB">Date of Birth:</label>
+            <input type="date" id="teacherDOB" name="teacherDOB" required>
+        </div> -->
+        <div class="input-group">
+            <label for="teacherAddress">Address:</label>
+            <textarea id="teacherAddress" name="teacherAddress" rows="3" required></textarea>
+        </div>
+        <div class="input-group">
+            <label for="teacherMobNo">Mobile Number:</label>
+            <input type="tel" id="teacherMobNo" name="teacherMobNo" pattern="[0-9]{10}" required>
+        </div>
+        <div class="input-group">
+            <label for="teacherUsername">Username:</label>
+            <input type="text" id="teacherUsername" name="teacherUsername" required>
+        </div>
+        <div class="input-group">
+            <label for="teacherPassword">Password:</label>
+            <input type="password" id="teacherPassword" name="teacherPassword" required>
+        </div>
+        <div class="input-group">
+            <button type="submit" name="registerTeacher">Register as Teacher</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByTagName("button");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+        
+        // Change container background color based on tab selected
+        var container = document.querySelector('.container');
+        if (tabName === 'student') {
+            container.classList.remove('teacher-selected');
+            container.classList.add('student-selected');
+        } else if (tabName === 'teacher') {
+            container.classList.remove('student-selected');
+            container.classList.add('teacher-selected');
+        }
+    }
+</script>
+
+</body>
+</html>

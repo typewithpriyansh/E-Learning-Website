@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF and Enter Link</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            position: relative;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: slideRight 0.5s ease-out;
+        }
+        @keyframes slideRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+        }
+        .go-back {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .go-back-icon svg {
+            fill: #2575fc;
+            transition: fill 0.3s ease;
+        }
+        .go-back:hover .go-back-icon svg {
+            fill: #6a11cb;
+        }
+        .go-back-text {
+            margin-left: 8px;
+            font-size: 14px;
+            color: #2575fc;
+            transition: color 0.3s ease;
+        }
+        .go-back:hover .go-back-text {
+            color: #6a11cb;
+        }
+        .container h2 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 24px;
+        }
+        .container input[type="file"],
+        .container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="go-back" onclick="goBack()">
+            <div class="go-back-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="go-back-text">Go Back To Previous Page</div>
+        </div>
+        <h2>Upload PDF or Enter Link</h2>
+        <form>
+            <input type="file" id="pdfFile" name="pdfFile" accept=".pdf" required><br>
+            <input type="text" id="link" name="link" placeholder="Enter Link" required><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

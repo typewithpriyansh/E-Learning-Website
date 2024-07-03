@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF and Enter Link</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('school.jpeg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(-5px); 
+        }
+        .container {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            animation: slideRight 0.5s ease-out;
+        }
+        @keyframes slideRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+        }
+        .go-back {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .go-back-icon svg {
+            fill: #2575fc;
+            transition: fill 0.3s ease;
+        }
+        .go-back:hover .go-back-icon svg {
+            fill: #6a11cb;
+        }
+        .go-back-text {
+            margin-left: 8px;
+            font-size: 14px;
+            color: #2575fc;
+            transition: color 0.3s ease;
+        }
+        .go-back:hover .go-back-text {
+            color: #6a11cb;
+        }
+        .container h2 {
+            margin-bottom: 30px;
+            color: white;
+            font-size: 24px;
+        }
+        .container input[type="file"],
+        .container input[type="text"],
+        .container select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: pulse 0.6s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .video-upload-section {
+            display: none;
+        }
+        .preview-container {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: none;
+        }
+        .preview-container h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 20px;
+        }
+        .preview-section {
+            margin-bottom: 20px;
+        }
+        .preview-item {
+            margin-bottom: 10px;
+        }
+        .preview-item a {
+            color: #2575fc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .preview-item a:hover {
+            text-decoration: underline;
+        }
+        .dropdown {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+        .dropdown select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+        }
+        .go-back-dropdown {
+            cursor: pointer;
+            color: #2575fc;
+            text-decoration: underline;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="go-back" onclick="goBack()">
+            <div class="go-back-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="go-back-text">Go Back To Previous Page</div>
+        </div>
+        <h2>Upload PDF or Enter Link</h2>
+        <form id="uploadForm" onsubmit="event.preventDefault(); handleSubmit();">
+            <input type="file" id="pdfFile" name="pdfFile" accept=".pdf"><br>
+            <input type="text" id="link" name="link" placeholder="Enter Link"><br>
+            <button type="button" onclick="showVideoUpload()">Upload Video here</button>
+            <div class="video-upload-section" id="videoUploadSection">
+                <select id="videoFormat" name="videoFormat">
+                    <option value="">Select Video Format</option>
+                    <option value="avi">AVI</option>
+                    <option value="mp4">MP4</option>
+                    <option value="mpeg">MPEG</option>
+                </select><br>
+                <input type="file" id="videoFile" name="videoFile" accept="video/*"><br>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="dropdown" id="dropdownMenu">
+        <select id="fileType" onchange="togglePreview()">
+            <option value="">Uploaded Files</option>
+            <option value="pdfs">View PDFs</option>
+            <option value="links">View Links</option>
+            <option value="videos">View Videos</option>
+        </select>
+    </div>
+    
+    <div class="preview-container" id="previewContainer">
+        <div class="preview-section" id="pdfSection">
+            <h3>Uploaded PDFs:</h3>
+            <div class="preview-item" id="pdfPreview"></div>
+            <span class="go-back-dropdown" onclick="showDropdown()">Go Back</span>
+        </div>
+        <div class="preview-section" id="linkSection">
+            <h3>Entered Links:</h3>
+            <div class="preview-item" id="linkPreview"></div>
+            <span class="go-back-dropdown" onclick="showDropdown()">Go Back</span>
+        </div>
+        <div class="preview-section" id="videoSection">
+            <h3>Uploaded Videos:</h3>
+            <div class="preview-item" id="videoPreview"></div>
+            <span class="go-back-dropdown" onclick="showDropdown()">Go Back</span>
+        </div>
+    </div>
+
+    <script>
+        let pdfFiles = [];
+        let links = [];
+        let videoFiles = [];
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function showVideoUpload() {
+            document.getElementById('videoUploadSection').style.display = 'block';
+        }
+
+        function handleSubmit() {
+            const pdfFile = document.getElementById('pdfFile').files[0];
+            const link = document.getElementById('link').value;
+            const videoFile = document.getElementById('videoFile').files[0];
+            const videoFormat = document.getElementById('videoFormat').value;
+
+            if (pdfFile) {
+                pdfFiles.push(pdfFile);
+            }
+            if (link) {
+                links.push(link);
+            }
+            if (videoFile && videoFormat) {
+                videoFiles.push({ file: videoFile, format: videoFormat });
+            }
+
+            document.getElementById('pdfFile').value = '';
+            document.getElementById('link').value = '';
+            document.getElementById('videoFile').value = '';
+            document.getElementById('videoFormat').value = '';
+
+            document.getElementById('videoUploadSection').style.display = 'none';
+            showDropdown();
+        }
+
+        function showDropdown() {
+            document.getElementById('dropdownMenu').style.display = 'block';
+            document.getElementById('previewContainer').style.display = 'none';
+        }
+
+        function togglePreview() {
+            const fileType = document.getElementById('fileType').value;
+            document.getElementById('dropdownMenu').style.display = 'none';
+            document.getElementById('previewContainer').style.display = 'block';
+
+            document.getElementById('pdfSection').style.display = fileType === 'pdfs' ? 'block' : 'none';
+            document.getElementById('linkSection').style.display = fileType === 'links' ? 'block' : 'none';
+            document.getElementById('videoSection').style.display = fileType === 'videos' ? 'block' : 'none';
+
+            if (fileType === 'pdfs') {
+                const pdfPreview = document.getElementById('pdfPreview');
+                pdfPreview.innerHTML = '';
+                pdfFiles.forEach(file => {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(file);
+                    a.target = '_blank';
+                    a.textContent = file.name;
+                    pdfPreview.appendChild(a);
+                    pdfPreview.appendChild(document.createElement('br'));
+                });
+            } else if (fileType === 'links') {
+                const linkPreview = document.getElementById('linkPreview');
+                linkPreview.innerHTML = '';
+                links.forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link;
+                    a.target = '_blank';
+                    a.textContent = link;
+                    linkPreview.appendChild(a);
+                    linkPreview.appendChild(document.createElement('br'));
+                });
+            } else if (fileType === 'videos') {
+                const videoPreview = document.getElementById('videoPreview');
+                videoPreview.innerHTML = '';
+                videoFiles.forEach(({ file, format }) => {
+                    const videoElement = document.createElement('video');
+                    videoElement.src = URL.createObjectURL(file);
+                    videoElement.controls = true;
+                    videoElement.width = 280;  // Adjust video width as needed
+                    videoPreview.appendChild(videoElement);
+                    videoPreview.appendChild(document.createElement('br'));
+                });
+            }
+        }
+    </script>
+</body>
+</html>

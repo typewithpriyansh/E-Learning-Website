@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Subject</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('school.jpeg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(-5px); 
+        }
+        .subject-container {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            animation: popup 0.5s ease-out;
+        }
+        @keyframes popup {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .go-back {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .go-back-icon svg {
+            fill: #2575fc;
+            transition: fill 0.3s ease;
+        }
+        .go-back:hover .go-back-icon svg {
+            fill: #6a11cb;
+        }
+        .go-back-text {
+            margin-left: 8px;
+            font-size: 14px;
+            color: #2575fc;
+            transition: color 0.3s ease;
+        }
+        .go-back:hover .go-back-text {
+            color: #6a11cb;
+        }
+        .subject-container h2 {
+            margin-bottom: 30px;
+            color: white;
+            font-size: 24px;
+        }
+        .subject-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .subject-container button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: pulse 0.6s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+    <script>
+        function redirectToPage(pageURL) {
+            window.location.href = pageURL;
+        }
+        
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</head>
+<body>
+    <div class="subject-container">
+        <div class="go-back" onclick="goBack()">
+            <div class="go-back-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="go-back-text">Go Back To Previous Page</div>
+        </div>
+        <h2>Select The Subject You Want To Study</h2>
+        <button onclick="redirectToPage('fourth.html')">Hindi</button><br>
+        <button onclick="redirectToPage('fourth.html')">English</button><br>
+        <button onclick="redirectToPage('fourth.html')">Marathi</button><br>
+        <button onclick="redirectToPage('fourth.html')">Science</button><br>
+        <button onclick="redirectToPage('fourth.html')">Geography</button><br>
+        <button onclick="redirectToPage('fourth.html')">History/Civics</button><br>
+        <button onclick="redirectToPage('fourth.html')">Maths</button><br>
+        <button onclick="redirectToPage('fourth.html')">Drawing</button><br>
+        <button onclick="redirectToPage('fourth.html')">Physical Education</button><br>
+        <button onclick="redirectToPage('fourth.html')">Computer</button><br>
+    </div>
+</body>
+</html>
